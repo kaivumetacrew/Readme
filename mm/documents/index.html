@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <style>
+        body {padding: 8px;  }
+        div {font-size: 0.6em; }
+        h5 {color: #00695C; }
+        h6 {color: #00897B; }
+
+    </style>
+</head>
+<body>
+<h5>Webview</h5>
+<h6>Sample send data to native:</h6>
+<button id="send" type="button" class="btn btn-outline-secondary btn-sm">Send</button>
+<hr class="hr hr-blurry"/>
+
+<h6>Sample receive data to native (function):</h6>
+<div id="native_message">...</div>
+<hr class="hr hr-blurry"/>
+
+<h6>Device info (event):</h6>
+<div id="device_info">...</div>
+<hr class="hr hr-blurry"/>
+
+
+<h6>Location permission status (event):</h6>
+<div id="location_permission">...</div>
+
+<button id="request_permission" type="button" class="btn btn-outline-secondary btn-sm">Request
+</button>
+
+<hr class="hr hr-blurry"/>
+
+<h6>Location service enable:</h6>
+<div id="location_enable">...</div>
+<button id="request_service" type="button" class="btn btn-outline-secondary btn-sm">Request</button>
+
+<hr class="hr hr-blurry"/>
+
+<h6>Current location:</h6>
+<div id="current_location">...</div>
+<button id="tracking_location" type="button" class="btn btn-outline-secondary btn-sm">Tracking</button>
+
+<hr class="hr hr-blurry"/>
+
+<script>
+
+    var isFlutterInAppWebViewReady = false;
+
+    window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+        console.log("web view ready");
+        isFlutterInAppWebViewReady = true;
+        getDeviceInfo();
+        getLocationPermissionStatus();
+        getLocationEnableStatus();
+    });
+
+
+    document.body.querySelector('#send').addEventListener('click', function() {
+        if(isFlutterInAppWebViewReady){
+            sendDataToNative();
+        }
+    });
+
+    document.body.querySelector('#request_permission').addEventListener('click', function() {
+        if(isFlutterInAppWebViewReady){
+            requestLocationPermission();
+        }
+    });
+
+    document.body.querySelector('#request_service').addEventListener('click', function() {
+        if(isFlutterInAppWebViewReady){
+            requestLocationService();
+        }
+    });
+
+    document.body.querySelector('#tracking_location').addEventListener('click', function() {
+        if(isFlutterInAppWebViewReady){
+            trackingLocation();
+        }
+    });
+
+</script>
+
+</body>
+
+</html>
