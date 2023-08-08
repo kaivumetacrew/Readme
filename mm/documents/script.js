@@ -73,10 +73,22 @@ function requestLocationService(){
     window.flutter_inappwebview.callHandler('requestLocationService');
 }
 
-function trackingLocation(){
-    window.addEventListener("trackingLocation", function(event) {
+function startLocationTracking(){
+    window.addEventListener("locationTracking", function(event) {
         const div = document.getElementById('current_location');
         div.textContent = JSON.stringify(event.detail);
     });
-    window.flutter_inappwebview.callHandler('trackingLocation');
+    window.flutter_inappwebview.callHandler('locationTracking');
 }
+
+function pickImage(){
+    window.addEventListener("pickImage", function(event) {
+        const img = document.getElementById('image');
+        img.src = "data:image/jpg;base64," + event.detail.base64Image;
+        //or
+        //img.src = event.detail.path;
+    });
+    window.flutter_inappwebview.callHandler('pickImage');
+}
+
+
