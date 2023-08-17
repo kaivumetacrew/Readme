@@ -8,15 +8,17 @@ function sendDataToNative(...args) {
     //            }
     //     );
     return window.flutter_inappwebview
-                    .callHandler(
-                        'handleData',
-                         1,
-                         true,
-                         ['bar', 5],
-                         {foo: 'baz'}
-                    );
+        .callHandler(
+        'handleData',
+        1,
+        true,
+        ['bar', 5],
+        {foo: 'baz'}
+    );
 }
 
+// Native would call this function directly as:
+// receiveDataFromNative({message: 'Hello web'});
 function receiveDataFromNative(data) {
     // In native use by call function name
     // ex: receiveDataFromNative(..)
@@ -25,11 +27,11 @@ function receiveDataFromNative(data) {
 }
 
 function getDeviceInfo(){
-   window.addEventListener("deviceInfo", function(event) {
+    window.addEventListener("deviceInfo", function(event) {
         const div = document.getElementById('device_info');
         div.textContent = JSON.stringify(event.detail, null, 4);
-   });
-   window.flutter_inappwebview.callHandler('deviceInfo');
+    });
+    window.flutter_inappwebview.callHandler('deviceInfo');
 }
 
 function getLocationPermissionStatus(){
@@ -91,4 +93,56 @@ function pickImage(){
     window.flutter_inappwebview.callHandler('pickImage');
 }
 
+function geoShareScreen(){
+    window.flutter_inappwebview.callHandler('geoShareScreen',{
+        "conversationId" : "123"
+    });
+}
+
+function listenSignInResult(){
+    window.addEventListener("signIn", function(event) {
+        const div = document.getElementById('sign_in_result');
+        div.textContent = JSON.stringify(event.detail);
+    });
+}
+
+function getCurrentUser(){
+    window.addEventListener("getCurrentUser", function(event) {
+        const div = document.getElementById('sign_in_result');
+        div.textContent = JSON.stringify(event.detail);
+    });
+    window.flutter_inappwebview.callHandler('getCurrentUser' );
+}
+
+function appleSignIn(){
+    window.flutter_inappwebview.callHandler('signIn',
+        { provider: 'apple' }
+    );
+}
+
+function kakaoSignIn(){
+    window.flutter_inappwebview.callHandler('signIn',
+        { provider: 'kakao' }
+    );
+}
+
+function googleSignIn(){
+    window.flutter_inappwebview.callHandler('signIn',
+        { provider: 'google' }
+    );
+}
+
+function naverSignIn(){
+    window.flutter_inappwebview.callHandler('signIn',
+        { provider: 'naver' }
+    );
+}
+
+function signOut(){
+    window.addEventListener("signOut", function(event) {
+        const div = document.getElementById('sign_in_result');
+        div.textContent = JSON.stringify(event.detail);
+    });
+    window.flutter_inappwebview.callHandler('signOut');
+}
 

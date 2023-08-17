@@ -1,12 +1,33 @@
 body {
     padding: 8px;
 }
+
 div {
     font-size: 0.6em;
 }
+
 h5 {
     color: #00695C;
 }
+
 h6 {
     color: #00897B;
+}
+
+.imageContainer {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background: #c7c7c7
+}
+
+.pickedImage {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
 }

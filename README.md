@@ -1,37 +1,77 @@
-# Setup workspace
+# Include news sdk
 
-### Build the Unity project
-
-1.Build unity project and choose destination folder.
-![](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/01.png)
-> Ex: it's name is "app" and put in folder which include xcode project folder.
-
--------------
-2.cd to unity build destination "app".
-![](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/02.png)
- In terminal: run pod install --repo-update
-```gem
-cd app
-pod install --repo-update
+### In android root project dir: settings.gradle
+```gradle
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+     // Add storageUrl 
+    String storageUrl = System.env.FLUTTER_STORAGE_BASE_URL ?: "https://storage.googleapis.com"
+    repositories {
+        google()
+        mavenCentral()
+        // Add maven 
+        maven {
+            //tdi_news is folder whichput in root project dir
+            url 'tdi_news'
+        }
+         // Add maven 
+        maven {
+            url "$storageUrl/download.flutter.io"
+        }
+    }
+}
 ```
 
-![](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/03.png)
-> If pod command is executed by unity build tool please skip this step
-
 -------------
 
-### Setup build settings
-Open project by `Unity-iPhone.xcworkspace`
-![](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/04.png)
+### In main application dir: build.gradle
+```gradle
+dependencies {
+    // add dependencies
+    debugImplementation 'vn.mc.tdi_news:flutter_debug:1.0'
+    profileImplementation 'vn.mc.tdi_news:flutter_profile:1.0'
+    releaseImplementation 'vn.mc.tdi_news:flutter_release:1.0'
+}
+```
 
-Add xcode project to workspace.
-![](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/05.png)
+### In main application dir: Manifest.xml
 
-Select Unity-iPhone -> Build Settings -> Set `Enable Bitcode`  = No
-![](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/06.png)
+```gradle
+<activity
+        android:name="io.flutter.embedding.android.FlutterActivity"
+        android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+        android:hardwareAccelerated="true"
+        android:windowSoftInputMode="adjustResize" />
 
-Select target xcode -> General -> Add Frameworks, Libraries, and Embedded Content -> Add  `Unity-iPhone/UnityFramework.framework`
-![](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/07.png)
+<meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-5557517834430684~5840633665" />
+
+```
 
 
-**Select xcode project and run*
+### Start news sdk:
+
+Init flutter engine
+```kotlin
+object FlutterEngineFactory {
+    private var isInitialized: Boolean = false
+
+    fun initEngine(context: Context) {
+        if (isInitialized) return
+        val flutterEngine = FlutterEngine(context)
+        val dartEntry = DartExecutor.DartEntrypoint.createDefault()
+        flutterEngine.dartExecutor.executeDartEntrypoint(dartEntry)
+        FlutterEngineCache
+            .getInstance()
+            .put("flutter_engine", flutterEngine)
+        isInitialized = true
+    }
+}
+```
+
+Start news sdk
+```kotlin
+    val intent = FlutterActivity.createDefaultIntent(this@MainActivity)
+    startActivity(intent)
+```

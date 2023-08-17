@@ -31,9 +31,9 @@
 <hr class="hr hr-blurry"/>
 
 <h6>Image pick:</h6>
-<div style="width:64px; height:64px; background: #c7c7c7" onclick="pickImage()">
-    <img id="image" class="img-fluid" style=";
-            width: 100%; height:auto">
+<div class="imageContainer"
+     onclick="pickImage()">
+    <img id="image" class="pickedImage">
 </div>
 
 
@@ -50,6 +50,26 @@
 </button>
 <hr class="hr hr-blurry"/>
 
+<h6>Geo share:</h6>
+<button onclick="geoShareScreen()" type="button" class="btn btn-outline-secondary btn-sm">Navigate
+</button>
+<hr class="hr hr-blurry"/>
+
+<h6>Sign in:</h6>
+<div id="sign_in_result">...</div>
+<button onclick="appleSignIn()" type="button" class="btn btn-outline-secondary btn-sm">Apple
+</button>
+<button onclick="kakaoSignIn()" type="button" class="btn btn-outline-secondary btn-sm">Kakao
+</button>
+<button onclick="googleSignIn()" type="button" class="btn btn-outline-secondary btn-sm">Google
+</button>
+<button onclick="naverSignIn()" type="button" class="btn btn-outline-secondary btn-sm">Naver
+</button>
+<h6></h6>
+<button onclick="signOut()" type="button" class="btn btn-outline-secondary btn-sm">Sign out
+</button>
+
+
 <!--<h6>Current location:</h6>-->
 <!--<div id="current_location">...</div>-->
 <!--<button id="tracking_location" type="button" class="btn btn-outline-secondary btn-sm">Tracking</button>-->
@@ -65,6 +85,8 @@
         getDeviceInfo();
         getLocationPermissionStatus();
         getLocationEnableStatus();
+        listenSignInResult();
+        getCurrentUser();
     });
 
     document.body.querySelector('#send').addEventListener('click', function() {
@@ -90,11 +112,6 @@
             startLocationTracking();
         }
     }
-
-
-
-
-
 
 
 </script>
