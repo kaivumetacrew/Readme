@@ -5,7 +5,13 @@ body {
 div {
     font-size: 0.6em;
 }
+pre {
+    font-size: 0.6em;
+}
 
+button btn btn-outline-secondary btn-sm{
+
+}
 h5 {
     color: #00695C;
 }
@@ -15,8 +21,8 @@ h6 {
 }
 
 .imageContainer {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     position: relative;
     background: #c7c7c7
 }

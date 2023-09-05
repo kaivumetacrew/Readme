@@ -17,46 +17,26 @@
 </head>
 <body>
 <h5>Webview</h5>
-<h6>Sample send data to native:</h6>
-<button id="send" type="button" class="btn btn-outline-secondary btn-sm">Send
-</button>
-<hr class="hr hr-blurry"/>
-
-<h6>Sample receive data to native (function):</h6>
-<div id="native_message">...</div>
-<hr class="hr hr-blurry"/>
-
-<h6>Device info (event):</h6>
-<div id="device_info">...</div>
-<hr class="hr hr-blurry"/>
-
-<h6>Image pick:</h6>
-<div class="imageContainer"
-     onclick="pickImage()">
-    <img id="image" class="pickedImage">
-</div>
-
-
-<hr class="hr hr-blurry"/>
-
-<h6>Location permission status:</h6>
-<div id="location_permission">...</div>
-<button onclick="requestPermission()" class="btn btn-outline-secondary btn-sm">Request</button>
-<hr class="hr hr-blurry"/>
-
-<h6>Location service enable:</h6>
-<div id="location_enable">...</div>
-<button onclick="requestService()" type="button" class="btn btn-outline-secondary btn-sm">Request
-</button>
-<hr class="hr hr-blurry"/>
 
 <h6>Geo share:</h6>
+<pre id="geo_search">...</pre>
 <button onclick="geoShareScreen()" type="button" class="btn btn-outline-secondary btn-sm">Navigate
+</button>
+<button onclick="startGeoShare()" type="button" class="btn btn-outline-secondary btn-sm">Share
+</button>
+<button onclick="stopGeoShare()" type="button" class="btn btn-outline-secondary btn-sm">Stop
+</button>
+<h6></h6>
+<button onclick="geoSearch()" type="button" class="btn btn-outline-secondary btn-sm">Search
+</button>
+<button class="btn btn-outline-secondary btn-sm" onclick="currentGeo()" type="button">CurrentGeo
+</button>
+<button class="btn btn-outline-secondary btn-sm" onclick="turnOnNotification()" type="button">TurnOnNotification
 </button>
 <hr class="hr hr-blurry"/>
 
 <h6>Sign in:</h6>
-<div id="sign_in_result">...</div>
+<pre id="sign_in_result">...</pre>
 <button onclick="appleSignIn()" type="button" class="btn btn-outline-secondary btn-sm">Apple
 </button>
 <button onclick="kakaoSignIn()" type="button" class="btn btn-outline-secondary btn-sm">Kakao
@@ -66,14 +46,62 @@
 <button onclick="naverSignIn()" type="button" class="btn btn-outline-secondary btn-sm">Naver
 </button>
 <h6></h6>
+<button onclick="passwordSignIn()" type="button" class="btn btn-outline-secondary btn-sm">Password
+</button>
 <button onclick="signOut()" type="button" class="btn btn-outline-secondary btn-sm">Sign out
 </button>
 
+<hr class="hr hr-blurry"/>
+<h6>User data:</h6>
+<pre id="current_data">...</pre>
+<button onclick="saveData()" type="button" class="btn btn-outline-secondary btn-sm">Save
+</button>
+<button onclick="getData()" type="button" class="btn btn-outline-secondary btn-sm">Get
+</button>
+<button onclick="clearData()" type="button" class="btn btn-outline-secondary btn-sm">Clear
+</button>
+<hr class="hr hr-blurry"/>
 
-<!--<h6>Current location:</h6>-->
-<!--<div id="current_location">...</div>-->
-<!--<button id="tracking_location" type="button" class="btn btn-outline-secondary btn-sm">Tracking</button>-->
+<h6>Schedule notify</h6>
+<button onclick="scheduleNotify()" type="button" class="btn btn-outline-secondary btn-sm">Notify
+</button>
+<hr class="hr hr-blurry"/>
 
+<h6>Image pick:</h6>
+<div class="imageContainer"
+     onclick="pickImage()">
+    <img id="image" class="pickedImage">
+</div>
+<hr class="hr hr-blurry"/>
+
+<h6>Device info (event):</h6>
+<pre id="device_info">...</pre>
+<hr class="hr hr-blurry"/>
+
+<h6>Location permission status:</h6>
+<div id="location_permission">...</div>
+<button onclick="requestLocationPermission()" class="btn btn-outline-secondary btn-sm">Request</button>
+<hr class="hr hr-blurry"/>
+
+<h6>Location service enable:</h6>
+<div id="location_enable">...</div>
+<button onclick="requestLocationService()" type="button" class="btn btn-outline-secondary btn-sm">Request
+</button>
+<hr class="hr hr-blurry"/>
+
+<h6>Share link:</h6>
+<button onclick="share()" type="button" class="btn btn-outline-secondary btn-sm">Share
+</button>
+<hr class="hr hr-blurry"/>
+
+<h6>Sample send data to native:</h6>
+<button id="send" type="button" class="btn btn-outline-secondary btn-sm">Send
+</button>
+<hr class="hr hr-blurry"/>
+
+<h6>Sample receive data to native (function):</h6>
+<pre id="native_message">...</pre>
+<hr class="hr hr-blurry"/>
 
 <script>
 
@@ -95,23 +123,6 @@
         }
     });
 
-    function requestPermission(){
-        if(isFlutterInAppWebViewReady){
-            requestLocationPermission();
-        }
-    }
-
-    function requestService(){
-        if(isFlutterInAppWebViewReady){
-            requestLocationService();
-        }
-    }
-
-    function locationTracking(){
-        if(isFlutterInAppWebViewReady){
-            startLocationTracking();
-        }
-    }
 
 
 </script>
