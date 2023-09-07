@@ -4,19 +4,24 @@
 ### Link on the frameworks
 For example, you can drag the frameworks from some/path/SampleIOS/TdiNews/Release/
 ![newssdk_ios_01](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/newssdk_ios_01.png)
-in Finder into your target’s Build  [Settings] > [Build Phases] > [Link Binary With Libraries]. 
+
+In Finder into your target’s Build  [Settings] > [Build Phases] > [Link Binary With Libraries]. 
 In the target’s build settings, add [$(PROJECT_DIR)/TdiNews/Release]
 to the [Framework Search Paths(FRAMEWORK_SEARCH_PATHS)].
 ![newssdk_ios_02](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/newssdk_ios_02.png)
+
 ### Embed the frameworks
 The generated dynamic frameworks must be embedded into your app to be loaded at runtime.
 After linking the frameworks, you should see them in the [Frameworks, Libraries, and Embedded Content] section of your target’s General settings. To embed the dynamic frameworks select Embed & Sign.
 They will then appear under Embed Frameworks within Build Phases as follows:
 ![newssdk_ios_03](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/newssdk_ios_03.png)
+
 ![newssdk_ios_04](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/newssdk_ios_04.png)
+
 In [General] select all TdiNews framework and select embed
 
 ### Launch news sdk from parent app:
+
 Create class:
 ```swift
 import UIKit
@@ -45,6 +50,7 @@ class TdiNews{
 
 Start a FlutterEngine and FlutterViewController
 `TdiNews.onInitApp(launchOptions: launchOptions)`
+
 In AppDelegate
 ```swift
 @main
