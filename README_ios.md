@@ -2,7 +2,8 @@
 # Integrate a Flutter module into your iOS project
 
 ### Link on the frameworks
-For example, you can drag the frameworks from some/path/SampleIOS/TdiNews/Release/
+For example, you can drag the frameworks from [some/path/SampleIOS/TdiNews/Release/]
+
 ![newssdk_ios_01](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/newssdk_ios_01.png)
 #
 In Finder into your target’s Build  [Settings] > [Build Phases] > [Link Binary With Libraries]. 
