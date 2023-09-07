@@ -2,13 +2,13 @@
 # Integrate a Flutter module into your iOS project
 
 ### Link on the frameworks
-For example, you can drag the frameworks from [some/path/SampleIOS/TdiNews/Release/]
+For example, you can drag the frameworks from [`some/path/SampleIOS/TdiNews/Release/`]
 
 ![newssdk_ios_01](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/newssdk_ios_01.png)
 #
-In Finder into your target’s Build  [Settings] > [Build Phases] > [Link Binary With Libraries]. 
-In the target’s build settings, add [$(PROJECT_DIR)/TdiNews/Release]
-to the [Framework Search Paths(FRAMEWORK_SEARCH_PATHS)].
+In Finder into your target’s Build  [`Settings`] > [`Build Phases`] > [`Link Binary With Libraries`]. 
+In the target’s build settings, add [`$(PROJECT_DIR)/TdiNews/Release`]
+to the [`Framework Search Paths(FRAMEWORK_SEARCH_PATHS)`].
 ![newssdk_ios_02](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/newssdk_ios_02.png)
 
 ### Embed the frameworks
@@ -19,7 +19,7 @@ They will then appear under Embed Frameworks within Build Phases as follows:
 
 ![newssdk_ios_04](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/newssdk_ios_04.png)
 
-In [General] select all TdiNews framework and select embed
+In [`General`] select all TdiNews framework and select embed
 
 ### Launch news sdk from parent app:
 
