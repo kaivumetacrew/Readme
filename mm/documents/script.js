@@ -26,6 +26,84 @@ function receiveDataFromNative(data) {
     div.textContent = JSON.stringify(data, undefined, 2);
 }
 
+// Lấy fcmToken để gửi back-end
+function getFcmToken() {
+    window.addEventListener("fcmToken", function(event) {
+           //let deviceId = event.detail.deviceId;
+           //let fcmToken = event.detail.fcmToken;
+           const div = document.getElementById('fcm_token');
+           div.textContent =JSON.stringify(event.detail, undefined, 2);
+       });
+    window.flutter_inappwebview.callHandler('fcmToken');
+}
+
+// Lấy data của notification mà user nhấn vào
+function notificationData(data) {
+    window.addEventListener("notificationData", function(event) {
+         const div = document.getElementById('notification_data');
+         div.textContent =JSON.stringify(event.detail, undefined, 2);
+    });
+    window.flutter_inappwebview.callHandler('notificationData');
+}
+
+// Đạt thông báo vào thời điểm nào đó
+function scheduleNotify(data) {
+    window.flutter_inappwebview.callHandler('scheduleNotify',{
+         id: "uniqueId",
+         title: "Sample notify",
+         body : "Sample notify after 10 seconds",
+         time : Date.now() + (10000)
+    });
+}
+
+// Bật thông báo theo kênh,
+function enableChannel(){
+    window.flutter_inappwebview.callHandler('enableChannel',{
+         channelId: "message",
+    });
+    window.flutter_inappwebview.callHandler('enableChannel',{
+         channelId: "appointment",
+    });
+}
+
+// Tắt thông báo theo kênh
+function disableChannel(){
+    window.flutter_inappwebview.callHandler('disableChannel',{
+         channelId: "message",
+    });
+    window.flutter_inappwebview.callHandler('disableChannel',{
+         channelId: "appointment",
+    });
+}
+
+// Thông báo hiện tại đang có
+function notificationCount(){
+    window.addEventListener("notificationCount", function(event) {
+        //let deviceId = event.detail.deviceId;
+        //let fcmToken = event.detail.fcmToken;
+       const div = document.getElementById('notification_count');
+       div.textContent = "Notitication " +  event.detail.count;
+    });
+    window.flutter_inappwebview.callHandler('notificationCount');
+}
+
+// Lắng nghe có thông báo đến khi app đang mở
+function onNotificationReceived() {
+    window.addEventListener("onNotificationReceived", function(event) {
+       const div = document.getElementById('notification_data');
+       div.textContent =JSON.stringify(event.detail, undefined, 2);
+       notificationCount();
+    });
+}
+
+
+
+
+
+
+
+
+
 function getDeviceInfo(){
     window.addEventListener("deviceInfo", function(event) {
         const div = document.getElementById('device_info');
@@ -133,15 +211,6 @@ function currentGeo(){
     window.flutter_inappwebview.callHandler('currentGeo', {
         isSimulate: true,
         timeout: 5
-    });
-}
-
-function scheduleNotify(){
-    window.flutter_inappwebview.callHandler('scheduleNotify',{
-        id: "uniqueId",
-        title: "Sample notify",
-        body : "Sample notify after 10 seconds",
-        time : Date.now() + (10000) // millisecondsSinceEpoch, null if notify at moment
     });
 }
 

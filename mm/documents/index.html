@@ -62,10 +62,24 @@
 </button>
 <hr class="hr hr-blurry"/>
 
-<h6>Schedule notify</h6>
-<button onclick="scheduleNotify()" type="button" class="btn btn-outline-secondary btn-sm">Notify
+<h6 id="notification_count">Notification</h6>
+<pre id="fcm_token">...</pre>
+<button onclick="getFcmToken()" type="button" class="btn btn-outline-secondary btn-sm">getFcmToken
 </button>
 <hr class="hr hr-blurry"/>
+<pre id="notification_data">...</pre>
+<button onclick="notificationData()" type="button" class="btn btn-outline-secondary btn-sm">notificationData
+</button>
+<button onclick="scheduleNotify()" type="button" class="btn btn-outline-secondary btn-sm">scheduleNotify
+</button>
+<hr class="hr hr-blurry"/>
+
+<button onclick="enableChannel()" type="button" class="btn btn-outline-secondary btn-sm">enableChannel
+</button>
+<button onclick="disableChannel()" type="button" class="btn btn-outline-secondary btn-sm">disableChannel
+</button>
+<hr class="hr hr-blurry"/>
+
 
 <h6>Image pick:</h6>
 <div class="imageContainer"
@@ -115,6 +129,7 @@
         getLocationEnableStatus();
         listenSignInResult();
         getCurrentUser();
+        onNotificationReceived();
     });
 
     document.body.querySelector('#send').addEventListener('click', function() {
