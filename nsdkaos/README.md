@@ -96,7 +96,7 @@ If you want specify init configurations:
 
 ```kotlin
 TdiNews.Builder(this)
-    .setServiceUrl("https://api.dev.inappnews.net")
+    .setServiceUrl("https://api.inappnews.net")
     .setAPN(TdiNews.APN.firebase)
     .initSDK { info ->
         print("init SDK completed")

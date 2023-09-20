@@ -56,7 +56,7 @@ If you want specify init configurations:
 
 ```swift
 TdiNews.Builder(UIApplication.shared)
-    .setServiceUrl("https://api.dev.inappnews.net")
+    .setServiceUrl("https://api.inappnews.net")
     .setAPN(TdiNews.APN.Firebase)
     .initSDK{ info in
          print("init SDK completed")
