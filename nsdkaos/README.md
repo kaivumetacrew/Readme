@@ -1,12 +1,18 @@
-[Android](https://github.com/kaivumetacrew/Readme/blob/nsdkaos) | [iOS](https://github.com/kaivumetacrew/Readme/blob/main/README_ios.md)
+
+
+[Android](https://github.com/kaivumetacrew/Readme/tree/main/nsdkaos) | [iOS](https://github.com/kaivumetacrew/Readme/tree/main/nsdkios)
+
+<div align="center">
 
 # In App News SDK
 ![logo_ko](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/logo_ko.png)
 
+</div>
+
 Delivered SDK include:
 
-- Sample android project (path: [/SampleAndroid])
-- [NewsSDK module] (path: [/SampleAndroid/tdinews])
+- Sample android project (path: [SampleAndroid]())
+- NewsSDK module (path: [SampleAndroid/tdinews]())
 
 
 ## Add News SDK to exist android project
@@ -17,7 +23,7 @@ Delivered SDK include:
 
 If project using gradle early than `7.0.2`
 
-In [rootProject/build.gradle]
+In [rootProject/build.gradle]()
 
 ```groovy
 
@@ -32,7 +38,7 @@ allprojects {
 
 If project using gradle `7.0.2` above
 
-In [rootProject/settings.gradle[]
+In [rootProject/settings.gradle]()
 
 ```groovy
 dependencyResolutionManagement {
@@ -45,7 +51,7 @@ dependencyResolutionManagement {
 
 ```
 
-## Add [NewsSDK] dependencies
+## Add NewsSDK dependencies
 
 in main application gradle
 ```groovy
@@ -64,7 +70,7 @@ implementation project(":tdinews"){
 ```
 
 ## Who use it
-init engine
+Init SDK
 ```kotlin
 import vn.mc.tdinews.TdiNews
 ```
@@ -77,8 +83,7 @@ TdiNews.Builder(this)
 ```
 
 Default service url is development service "https://api.dev.inappnews.net"
-Default notification service is OneSignal
-If you want specify init with other service
+Default notification service is OneSignal if you want specify init with other service:
 
 ```kotlin
 TdiNews.Builder(this)
@@ -87,4 +92,10 @@ TdiNews.Builder(this)
     .initSDK { info ->
         print("init SDK completed")
     }
+```
+
+Launch news UI from your activity (made sure SDK was initialized):
+```kotlin
+   val intent = TdiNews.getIntent(this)
+   startActivity(intent)
 ```
