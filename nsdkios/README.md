@@ -48,7 +48,7 @@ Product service url: https://api.inappnews.net
 
 Default parameters:
 
-ServiceUrl: Development
+ServiceUrl: [Development](https://api.dev.inappnews.net)
 
 APN: `TdiNews.APN.OneSignal`
 
