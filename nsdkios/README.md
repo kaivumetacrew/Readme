@@ -42,7 +42,7 @@ TdiNews.Builder(UIApplication.shared)
     }
 ```
 
-Development service url: "https://api.dev.inappnews.net"
+Development service url: https://api.dev.inappnews.net
 
 Product service url: https://api.inappnews.net
 
@@ -50,7 +50,7 @@ Default parameters:
 
 ServiceUrl: Development
 
-APN: TdiNews.APN.OneSignal
+APN: `TdiNews.APN.OneSignal`
 
 If you want specify init configurations:
 

@@ -82,7 +82,7 @@ TdiNews.Builder(this)
     }
 ```
 
-Development service url: "https://api.dev.inappnews.net"
+Development service url: https://api.dev.inappnews.net
 
 Product service url: https://api.inappnews.net
 
@@ -90,7 +90,7 @@ Default parameters:
 
 ServiceUrl: Development
 
-APN: TdiNews.APN.oneSignal
+APN: `TdiNews.APN.oneSignal`
 
 If you want specify init configurations:
 
