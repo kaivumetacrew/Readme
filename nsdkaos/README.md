@@ -1,6 +1,6 @@
 
 
-[Android](https://github.com/kaivumetacrew/Readme/tree/main/nsdkaos) 
+[iOS](https://github.com/kaivumetacrew/Readme/tree/main/nsdkaos) 
 
 <div align="center">
 
