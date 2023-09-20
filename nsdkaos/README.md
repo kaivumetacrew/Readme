@@ -82,9 +82,17 @@ TdiNews.Builder(this)
     }
 ```
 
-Default service url is development service "https://api.dev.inappnews.net"
+Development service url: "https://api.dev.inappnews.net"
+
 Product service url: https://api.inappnews.net
-Default notification service is OneSignal if you want specify init with other service:
+
+Default parameters:
+
+ServiceUrl: Development
+
+APN: TdiNews.APN.oneSignal
+
+If you want specify init configurations:
 
 ```kotlin
 TdiNews.Builder(this)
@@ -97,6 +105,6 @@ TdiNews.Builder(this)
 
 Launch news UI from your activity (made sure SDK was initialized):
 ```kotlin
-   val intent = TdiNews.getIntent(this)
+val intent = TdiNews.getIntent(this)
 startActivity(intent)
 ```
