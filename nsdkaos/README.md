@@ -1,6 +1,6 @@
 
 
-[iOS](https://github.com/kaivumetacrew/Readme/tree/main/nsdkaos) 
+[iOS](https://github.com/kaivumetacrew/Readme/tree/main/nsdkios) 
 
 <div align="center">
 
