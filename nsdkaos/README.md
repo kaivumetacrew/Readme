@@ -6,24 +6,20 @@
 
 
 # IN APP NEWS SDK
-![logo_ko](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/logo_ko.png)
+![logo_ko](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/logo_ko.png)
 
 </div>
-<br>
-Delivered SDK include:
 
+Delivered SDK include:
 - Sample android project (path: [SampleAndroid]())
 - NewsSDK module (path: [SampleAndroid/tdinews]())
 
 
-## Add News SDK to exist android project
-
-`File` -> `New` -> `Import module` -> select [NewsSDK module] `(folder "tdinews")`
-<br>
+## Add News SDK to exist Android project
+`File` -> `New` -> `Import module` -> select [tdinews module] `(folder "tdinews")`
 
 
 ## Add maven repo path for [NewsSDK module] in project settings
-
 If project using gradle early than `7.0.2`
 
 In [rootProject/build.gradle]()
@@ -56,7 +52,6 @@ dependencyResolutionManagement {
 
 
 ## Add NewsSDK dependencies
-
 in main application gradle
 ```groovy
 implementation project(":tdinews"){
@@ -102,5 +97,5 @@ TdiNews.Builder(this)
 Launch news UI from your activity (made sure SDK was initialized):
 ```kotlin
    val intent = TdiNews.getIntent(this)
-   startActivity(intent)
+startActivity(intent)
 ```
