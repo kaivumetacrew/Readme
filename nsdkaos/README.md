@@ -83,6 +83,7 @@ TdiNews.Builder(this)
 ```
 
 Default service url is development service "https://api.dev.inappnews.net"
+Product service url: https://api.inappnews.net
 Default notification service is OneSignal if you want specify init with other service:
 
 ```kotlin
