@@ -4,7 +4,8 @@
 
 <div align="center">
 
-# In App News SDK
+
+# IN APP NEWS SDK
 ![logo_ko](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/assets/logo_ko.png)
 
 </div>
@@ -13,12 +14,14 @@ Delivered SDK include:
 
 - Sample android project (path: [SampleAndroid]())
 - NewsSDK module (path: [SampleAndroid/tdinews]())
-##
+
+
 ## Add News SDK to exist android project
 
 `File` -> `New` -> `Import module` -> select [NewsSDK module] `(folder "tdinews")`
 <br>
-##
+
+
 ## Add maven repo path for [NewsSDK module] in project settings
 
 If project using gradle early than `7.0.2`
@@ -50,7 +53,8 @@ dependencyResolutionManagement {
 }
 
 ```
-##
+
+
 ## Add NewsSDK dependencies
 
 in main application gradle
@@ -68,7 +72,8 @@ implementation project(":tdinews"){
     releaseImplementation ('vn.mc.tdi_news:flutter_release:1.0')
 }
 ```
-##
+
+
 ## Who use it
 Init SDK
 ```kotlin
