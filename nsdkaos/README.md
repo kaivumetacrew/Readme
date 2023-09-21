@@ -79,7 +79,7 @@ import vn.mc.tdinews.TdiNews
 TdiNews.Builder(this)
     .setClientId("nolaebang")
     .initSDK { info ->
-        print("init SDK completed")
+        print("init sdk completed")
     }
 ```
 
@@ -98,10 +98,10 @@ If you want specify init configurations:
 ```kotlin
 TdiNews.Builder(this)
     .setClientId("nolaebang")
-    .setServiceUrl("https://api.inappnews.net")
+    .setServiceUrl("https://api.dev.inappnews.net")
     .setAPN(TdiNews.APN.Firebase)
     .initSDK { info ->
-        print("init SDK completed")
+        print("init sdk completed")
     }
 ```
 

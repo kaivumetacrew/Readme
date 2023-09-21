@@ -19,13 +19,22 @@ In exist Xcode project
 `Application target settings` -> `General` -> `Frameworks, Libraries, and Embedded Content`
 
 `Add Other...` -> `Add Files...` -> select [TdiNews package]() `(folder "SampleIOS/TdiNews")`
+
 ![01](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios1.png)
+
+Example project, you can drag the frameworks from sample/SampleIOS/TdiNews/news/Debug/ in Finder into your target’s Build Settings > Build Phases > Link Binary With Libraries.
+
+In the target’s build settings, add `$(PROJECT_DIR)/TdiNews/news/Release/` to the Framework Search 
+Paths (FRAMEWORK_SEARCH_PATHS).
+
+![02](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios2.png)
 
 `Application target settings` -> `Build Phases` -> `Link Binary With Libraries`
 `Add Other...` -> `Add Files...` -> select
 all [*.xcframework]() `(folder "SampleIOS/TdiNews/news/")`
 Then embed them in `General` -> `Frameworks, Libraries, and Embedded Content`
-![02](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios2.png)
+
+![03](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios3.png)
 
 ## Who use it
 
@@ -38,8 +47,9 @@ import TdiNews
 ```swift
 TdiNews.Builder(UIApplication.shared)
     .setClientId("nolaebang")
-    .initSDK{ info in
-        print("init SDK completed")
+    .setServiceUrl("https://api.dev.inappnews.net")
+    .initSDK { info in
+        self.showInfoText(info)
     }
 ```
 
@@ -58,10 +68,10 @@ If you want specify init configurations:
 ```swift
 TdiNews.Builder(UIApplication.shared)
     .setClientId("nolaebang")
-    .setServiceUrl("https://api.inappnews.net")
+    .setServiceUrl("https://api.dev.inappnews.net")
     .setAPN(TdiNews.APN.Firebase)
-    .initSDK{ info in
-         print("init SDK completed")
+    .initSDK { info in
+        self.showInfoText(info)
     }
 ```
 
@@ -76,7 +86,7 @@ If exist application had Background Modes and Push Notifications capability, ple
 
 For notification in news sdk you need add Background Modes and Push Notifications Capability
 in `Application target settings` -> `Signing & Capability` -> `+ Capability`
-![03](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios3.png)
+![04](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios4.png)
 
 In `AppDelegate` implement `UNUserNotificationCenterDelegate` 
 ```swift
