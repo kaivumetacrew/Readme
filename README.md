@@ -11,6 +11,8 @@
 # ANDROID
 [Document](https://github.com/kaivumetacrew/Readme/tree/main/nsdkaos)
 
+<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/adr_screen1.png" width="200" height="auto">
+
 ![as1](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/adr_screen1.png)
 
 ![as2](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/adr_screen2.png)
