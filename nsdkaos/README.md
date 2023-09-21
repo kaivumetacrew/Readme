@@ -91,7 +91,7 @@ Default parameters:
 
 ServiceUrl: [Development](https://api.dev.inappnews.net)
 
-APN: `TdiNews.APN.oneSignal`
+APN: `TdiNews.APN.OneSignal`
 
 If you want specify init configurations:
 
@@ -99,7 +99,7 @@ If you want specify init configurations:
 TdiNews.Builder(this)
     .setClientId("nolaebang")
     .setServiceUrl("https://api.inappnews.net")
-    .setAPN(TdiNews.APN.firebase)
+    .setAPN(TdiNews.APN.Firebase)
     .initSDK { info ->
         print("init SDK completed")
     }

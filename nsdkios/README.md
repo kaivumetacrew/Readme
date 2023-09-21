@@ -72,9 +72,15 @@ self.present(TdiNews.shared.viewController(), animated: true, completion: nil)
 ```
 
 ## Receive news notifications
+If exist application had Background Modes and Push Notifications capability, please skip this step
 
 For notification in news sdk you need add Background Modes and Push Notifications Capability
 in `Application target settings` -> `Signing & Capability` -> `+ Capability`
-If exist application had Background Modes and Push Notifications capability, please skip this step
 ![03](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios3.png)
+
+In `AppDelegate` implement `UNUserNotificationCenterDelegate` 
+```swift
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate
+``
+
 
