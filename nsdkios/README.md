@@ -37,6 +37,7 @@ import TdiNews
 
 ```swift
 TdiNews.Builder(UIApplication.shared)
+    .setClientId("nolaebang")
     .initSDK{ info in
         print("init SDK completed")
     }
@@ -56,6 +57,7 @@ If you want specify init configurations:
 
 ```swift
 TdiNews.Builder(UIApplication.shared)
+    .setClientId("nolaebang")
     .setServiceUrl("https://api.inappnews.net")
     .setAPN(TdiNews.APN.Firebase)
     .initSDK{ info in
