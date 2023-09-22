@@ -12,10 +12,8 @@ Delivered SDK include:
 - Sample android project (path: [SampleAndroid]())
 - NewsSDK module (path: [SampleAndroid/tdinews]())
 
-
 ## Add News SDK to exist Android project
 `File` -> `New` -> `Import module` -> select [tdinews module] `(folder "tdinews")`
-
 
 ## Add maven repo path for [NewsSDK module] in project settings
 If project using gradle early than `7.0.2`
@@ -48,7 +46,6 @@ dependencyResolutionManagement {
 
 ```
 
-
 ## Add NewsSDK dependencies
 in main application gradle
 ```groovy
@@ -66,16 +63,18 @@ implementation project(":tdinews"){
 }
 ```
 
-
 ## Who use it
 Init SDK
 ```kotlin
 import vn.mc.tdinews.TdiNews
 ```
 
+Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
+or using client id "com.example.sampleapp" for development and testing
+
 ```kotlin
 TdiNews.Builder(this)
-    .setClientId("nolaebang")
+    .setClientId("{YOUR_CLIENT_ID}")
     .initSDK { info ->
         print("init sdk completed")
     }
@@ -92,10 +91,10 @@ ServiceUrl: [Development](https://api.dev.inappnews.net)
 APN: `TdiNews.APN.OneSignal`
 
 If you want specify init configurations:
-
+Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 ```kotlin
 TdiNews.Builder(this)
-    .setClientId("nolaebang")
+    .setClientId("{YOUR_CLIENT_ID}")
     .setServiceUrl("https://api.dev.inappnews.net")
     .setAPN(TdiNews.APN.Firebase)
     .initSDK { info ->

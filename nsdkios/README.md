@@ -44,9 +44,11 @@ Init SDK
 import TdiNews
 ```
 
+Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
+or using client id "com.example.sampleapp" for development and testing
 ```swift
 TdiNews.Builder(UIApplication.shared)
-    .setClientId("nolaebang")
+    .setClientId("{YOUR_CLIENT_ID}")
     .setServiceUrl("https://api.dev.inappnews.net")
     .initSDK { info in
         self.showInfoText(info)
@@ -64,10 +66,10 @@ ServiceUrl: [Development](https://api.dev.inappnews.net)
 APN: `TdiNews.APN.OneSignal`
 
 If you want specify init configurations:
-
+Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 ```swift
 TdiNews.Builder(UIApplication.shared)
-    .setClientId("nolaebang")
+    .setClientId("{YOUR_CLIENT_ID}")
     .setServiceUrl("https://api.dev.inappnews.net")
     .setAPN(TdiNews.APN.Firebase)
     .initSDK { info in
