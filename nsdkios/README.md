@@ -93,6 +93,30 @@ in `Application target settings` -> `Signing & Capability` -> `+ Capability`
 In `AppDelegate` implement `UNUserNotificationCenterDelegate` 
 ```swift
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate
-``
+```
 
+## Custom Channel/Media receive notifications settings (After user update channel/media, device will receive notifications from all channel/media which it was selected)
+Ios sample
+<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/is1.png" width="200" height="auto">
+<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/is3.png" width="200" height="auto">
 
+To get current notification settings of selected channels
+```swift
+TdiNews.shared.getCurrentChannels { channels in
+    channels.forEach { channel in
+        // Channel name
+        print(channel.name)
+        // receive notification if isReceive value is true
+        print(channel.isReceive)
+    }
+}
+```
+
+To update current notification settings of selected channels
+```swift
+// should show progress here
+TdiNews.shared.updateCurrentChannels(channels: self.channels, channelsResult: { channels in
+    // and should hide progress here
+    self.dismiss(animated: true)
+});
+```
