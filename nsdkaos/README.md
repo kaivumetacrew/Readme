@@ -107,3 +107,30 @@ Launch news UI from your activity (made sure SDK was initialized):
 val intent = TdiNews.getIntent(this)
 startActivity(intent)
 ```
+
+## Custom Channel/Media receive notifications settings (After user update channel/media, device will receive notifications from all channel/media which it was selected)
+Ios sample
+
+<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/aos1.png" width="200" height="auto">
+
+<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/aos3.png" width="200" height="auto">
+
+
+To get current notification settings of selected channels
+```kotlin
+TdiNews.getCurrentChannels {
+    it.forEach { channel in
+       adapter.list = it
+       adapter.notifyDataSetChanged()
+    }
+}
+```
+
+To update current notification settings of selected channels
+```kotlin
+// should show progress here
+TdiNews.updateCurrentChannels(adapter.list) {
+    // and hide progress here
+    finish()
+}
+```

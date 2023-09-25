@@ -97,17 +97,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 ## Custom Channel/Media receive notifications settings (After user update channel/media, device will receive notifications from all channel/media which it was selected)
 Ios sample
+
 <img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/is1.png" width="200" height="auto">
+
 <img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/is3.png" width="200" height="auto">
+
 
 To get current notification settings of selected channels
 ```swift
+// Channel list for display to uicollectionview
+var channels : [TdiNews.Channel] = []
+```
+
+```swift
 TdiNews.shared.getCurrentChannels { channels in
+    self.channels = channels
     channels.forEach { channel in
-        // Channel name
-        print(channel.name)
-        // receive notification if isReceive value is true
-        print(channel.isReceive)
+        // Would receive notification of this channel if isReceive value is true
+        print("Channel: \(channel.name) Receive notification: \(channel.isReceive)")
     }
 }
 ```
