@@ -70,8 +70,8 @@ import vn.mc.tdinews.TdiNews
 ```
 
 Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
-or using client id "com.example.sampleapp" for development and testing
-
+or using client id "com.sample.app" for development and testing
+Should be put in your `Application.onCreate`
 ```kotlin
 TdiNews.Builder(this)
     .setClientId("{YOUR_CLIENT_ID}")
@@ -106,6 +106,16 @@ Launch news UI from your activity (made sure SDK was initialized):
 ```kotlin
 val intent = TdiNews.getIntent(this)
 startActivity(intent)
+```
+## Handle on notification click
+
+Should be put in launch activity
+```kotlin
+TdiNews.setOnNotificationClick {
+    initSDK {
+        startActivity(TdiNews.getIntent(this))
+    }
+}
 ```
 
 ## Custom Channel/Media receive notifications settings (After user update channel/media, device will receive notifications from all channel/media which it was selected)

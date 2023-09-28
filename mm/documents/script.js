@@ -216,12 +216,37 @@ function currentGeo(){
 
 function pickImage(){
     window.addEventListener("pickImage", function(event) {
-        const img = document.getElementById('image');
+        const img = document.getElementById('image1');
         img.src = "data:image/jpg;base64," + event.detail.base64Image;
         //or
         //img.src = event.detail.path;
     });
     window.flutter_inappwebview.callHandler('pickImage');
+}
+function pickImageFromCamera(){
+    window.addEventListener("pickImageFromCamera", function(event) {
+        const img = document.getElementById('image2');
+        img.src = "data:image/jpg;base64," + event.detail.base64Image;
+        //or
+        //img.src = event.detail.path;
+    });
+    window.flutter_inappwebview.callHandler('pickImageFromCamera');
+}
+
+function pickImage(){
+    window.addEventListener("pickImages", function(event) {
+            // event.detail = {
+            //    "2335435435": {
+            //        "base64Image" : "DTFKJHB32534%RTYF534534534HG..."
+            //        "path": "/.."
+            //    },
+            //    "2335435436": {
+            //         "base64Image" : "JKYBGFKNGUNGFBJTDVHRTSFDYJFUKFG..."
+            //         "path": "/.."
+            //    }
+            //}
+    });
+    window.flutter_inappwebview.callHandler('pickImages', { max: 5 });
 }
 
 function geoShareScreen(){
