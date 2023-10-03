@@ -70,7 +70,7 @@ import vn.mc.tdinews.TdiNews
 ```
 
 Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
-or using client id "com.sample.app" for development and testing
+or using client id "IANCT-TEST" for development and testing
 Should be put in your `Application.onCreate`
 ```kotlin
 TdiNews.Builder(this)
