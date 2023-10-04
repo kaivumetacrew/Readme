@@ -48,20 +48,20 @@ Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 or using client id "IANCT-TEST" for development and testing
 ```swift
 TdiNews.Builder(UIApplication.shared)
-    .setClientId("{YOUR_CLIENT_ID}")
-    .setServiceUrl("https://api.dev.inappnews.net")
+    .setClientId("IANCT-TEST")
+    .setServiceUrl("https://api.uat.inappnews.net")
     .initSDK { info in
         self.showInfoText(info)
     }
 ```
 
-Development service url: https://api.dev.inappnews.net
+Test service url: https://api.uat.inappnews.net
 
 Product service url: https://api.inappnews.net
 
 Default parameters:
 
-ServiceUrl: [Development](https://api.dev.inappnews.net)
+ServiceUrl: [Development](https://api.uat.inappnews.net)
 
 APN: `TdiNews.APN.OneSignal`
 
@@ -70,8 +70,8 @@ Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 ```swift
 TdiNews.Builder(UIApplication.shared)
     .setClientId("{YOUR_CLIENT_ID}")
-    .setServiceUrl("https://api.dev.inappnews.net")
-    .setAPN(TdiNews.APN.Firebase)
+    .setServiceUrl("{SERVICE_URL}")
+    .setAPN(TdiNews.APN.OneSignal)
     .initSDK { info in
         self.showInfoText(info)
     }
@@ -95,35 +95,3 @@ In `AppDelegate` implement `UNUserNotificationCenterDelegate`
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate
 ```
 
-## Custom Channel/Media receive notifications settings (After user update channel/media, device will receive notifications from all channel/media which it was selected)
-Ios sample
-
-<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/is1.png" width="200" height="auto">
-
-<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/is3.png" width="200" height="auto">
-
-
-To get current notification settings of selected channels
-```swift
-// Channel list for display to uicollectionview
-var channels : [TdiNews.Channel] = []
-```
-
-```swift
-TdiNews.shared.getCurrentChannels { channels in
-    self.channels = channels
-    channels.forEach { channel in
-        // Would receive notification of this channel if isReceive value is true
-        print("Channel: \(channel.name) Receive notification: \(channel.isReceive)")
-    }
-}
-```
-
-To update current notification settings of selected channels
-```swift
-// should show progress here
-TdiNews.shared.updateCurrentChannels(channels: self.channels, channelsResult: { channels in
-    // and should hide progress here
-    self.dismiss(animated: true)
-});
-```

@@ -74,19 +74,20 @@ or using client id "IANCT-TEST" for development and testing
 Should be put in your `Application.onCreate`
 ```kotlin
 TdiNews.Builder(this)
-    .setClientId("{YOUR_CLIENT_ID}")
+    .setClientId("IANCT-TEST")
+    .setServiceUrl("https://api.uat.inappnews.net")
     .initSDK { info ->
         print("init sdk completed")
     }
 ```
 
-Development service url: https://api.dev.inappnews.net
+Test service url: https://api.uat.inappnews.net
 
 Product service url: https://api.inappnews.net
 
 Default parameters:
 
-ServiceUrl: [Development](https://api.dev.inappnews.net)
+ServiceUrl: [Development](https://api.uat.inappnews.net)
 
 APN: `TdiNews.APN.OneSignal`
 
@@ -95,8 +96,8 @@ Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 ```kotlin
 TdiNews.Builder(this)
     .setClientId("{YOUR_CLIENT_ID}")
-    .setServiceUrl("https://api.dev.inappnews.net")
-    .setAPN(TdiNews.APN.Firebase)
+    .setServiceUrl("{SERVICE_URL}")
+    .setAPN(TdiNews.APN.OneSignal)
     .initSDK { info ->
         print("init sdk completed")
     }
@@ -118,29 +119,3 @@ TdiNews.setOnNotificationClick {
 }
 ```
 
-## Custom Channel/Media receive notifications settings (After user update channel/media, device will receive notifications from all channel/media which it was selected)
-Ios sample
-
-<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/aos1.png" width="200" height="auto">
-
-<img src="https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/aos3.png" width="200" height="auto">
-
-
-To get current notification settings of selected channels
-```kotlin
-TdiNews.getCurrentChannels {
-    it.forEach { channel in
-       adapter.list = it
-       adapter.notifyDataSetChanged()
-    }
-}
-```
-
-To update current notification settings of selected channels
-```kotlin
-// should show progress here
-TdiNews.updateCurrentChannels(adapter.list) {
-    // and hide progress here
-    finish()
-}
-```
