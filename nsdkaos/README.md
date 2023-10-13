@@ -108,7 +108,24 @@ Launch news UI from your activity (made sure SDK was initialized):
 val intent = TdiNews.getIntent(this)
 startActivity(intent)
 ```
-## Handle on notification click
+## Handle notification service click
+Put your notification provided by client
+-
+Inside app/AndroidManifest.xml tag `application`
+
+Test service:
+```xml
+  <meta-data
+    android:name="com.onesignal.NotificationServiceExtension"
+    android:value="vn.mc.tdinews.TdiNotificationServiceTest" />
+```
+Replace meta-data value service class follow with your clientId:
+```xml
+  <meta-data
+    android:name="com.onesignal.NotificationServiceExtension"
+    android:value="vn.mc.tdinews.TdiNotificationService${YOUR_CLIENT_ID}" />
+```
+ex: `vn.mc.tdinews.TdiNotificationServiceIANCT001`
 
 Should be put in launch activity
 ```kotlin
