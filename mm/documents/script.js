@@ -96,6 +96,12 @@ function onNotificationReceived() {
     });
 }
 
+function openBrowser(){
+    window.flutter_inappwebview.callHandler('actionView',{
+        url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+   });
+}
+
 
 
 
@@ -128,7 +134,25 @@ function getData(){
     window.flutter_inappwebview.callHandler('getData',"user");
 }
 
-function getLocationPermissionStatus(){
+
+
+function locationEnableStatus(){
+    window.addEventListener("locationEnableStatus", function(event) {
+         const div = document.getElementById('location_enable');
+         div.textContent = event.detail.enable;
+    });
+    window.flutter_inappwebview.callHandler('locationEnableStatus');
+}
+
+function locationEnableRequest(){
+    window.addEventListener("locationEnableRequest", function(event) {
+        console.log(event.detail.enable);
+    });
+    window.flutter_inappwebview.callHandler('locationEnableRequest');
+}
+
+
+function locationStatus(){
     //granted: the permission to use location services has been granted for high accuracy.
 
     //grantedLimited: The permission has been granted but for low accuracy.
@@ -140,34 +164,34 @@ function getLocationPermissionStatus(){
     //deniedForever: the permission to use location services has been denied forever by the
     //user. No dialog will be displayed on permission request.
 
-   window.addEventListener("locationPermission", function(event) {
+   window.addEventListener("locationStatus", function(event) {
         const div = document.getElementById('location_permission');
         div.textContent = event.detail.permissionStatus;
    });
-   window.flutter_inappwebview.callHandler('locationPermission');
+   window.flutter_inappwebview.callHandler('locationStatus');
 }
 
-function getLocationEnableStatus(){
-    window.addEventListener("locationEnable", function(event) {
-         const div = document.getElementById('location_enable');
-         div.textContent = event.detail.enable;
-    });
-    window.flutter_inappwebview.callHandler('locationEnable');
-}
-
-function requestLocationPermission(){
-    window.addEventListener("requestLocationPermission", function(event) {
+function locationRequest(){
+    window.addEventListener("locationRequest", function(event) {
          console.log(event.detail.permissionStatus);
     });
-    window.flutter_inappwebview.callHandler('requestLocationPermission');
+    window.flutter_inappwebview.callHandler('locationRequest');
 }
 
-function requestLocationService(){
-    window.addEventListener("requestLocationService", function(event) {
-        console.log(event.detail.enable);
-    });
-    window.flutter_inappwebview.callHandler('requestLocationService');
+function notificationStatus(){
+   window.addEventListener("notificationStatus", function(event) {
+
+   });
+   window.flutter_inappwebview.callHandler('notificationStatus');
 }
+
+function notificationRequest(){
+    window.addEventListener("notificationRequest", function(event) {
+         console.log(event.detail.permissionStatus);
+    });
+    window.flutter_inappwebview.callHandler('notificationRequest');
+}
+
 
 function startGeoShare(){
     window.flutter_inappwebview.callHandler('startGeoShare',{
@@ -175,7 +199,8 @@ function startGeoShare(){
             id: "user1",
             name: "슬픈 짜장면",
             avatar: null,
-        }
+        },
+        appointmentId: "appointmentId"
     });
 }
 
@@ -223,6 +248,7 @@ function pickImage(){
     });
     window.flutter_inappwebview.callHandler('pickImage');
 }
+
 function pickImageFromCamera(){
     window.addEventListener("pickImageFromCamera", function(event) {
         const img = document.getElementById('image2');
@@ -233,7 +259,7 @@ function pickImageFromCamera(){
     window.flutter_inappwebview.callHandler('pickImageFromCamera');
 }
 
-function pickImage(){
+function pickImages(){
     window.addEventListener("pickImages", function(event) {
             // event.detail = {
             //    "2335435435": {
@@ -355,3 +381,22 @@ function signOut(){
     window.flutter_inappwebview.callHandler('signOut');
 }
 
+function pickFile(){
+    window.addEventListener("pickFile", function(event) {
+        console.log("pickFile");
+        const div = document.getElementById('file_info');
+        console.log(JSON.stringify(event.detail, undefined, 2));
+        div.textContent = JSON.stringify(event.detail, undefined, 2);
+    });
+    window.flutter_inappwebview.callHandler('pickFile');
+}
+
+function pickFiles(){
+    window.addEventListener("pickFiles", function(event) {
+        console.log("pickFiles");
+        const div = document.getElementById('files_info');
+        console.log(JSON.stringify(event.detail, undefined, 2));
+        div.textContent = JSON.stringify(event.detail, undefined, 2);
+    });
+    window.flutter_inappwebview.callHandler('pickFiles');
+}

@@ -36,7 +36,7 @@ Then embed them in `General` -> `Frameworks, Libraries, and Embedded Content`
 
 ![03](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios3.png)
 
-## Who use it
+## Use
 
 Init SDK
 

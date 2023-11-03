@@ -22,8 +22,8 @@
 <pre id="geo_search">...</pre>
 <button onclick="geoShareScreen()" type="button" class="btn btn-outline-secondary btn-sm">Navigate
 </button>
-<button onclick="startGeoShare()" type="button" class="btn btn-outline-secondary btn-sm">Share
-</button>
+<!-- <button onclick="startGeoShare()" type="button" class="btn btn-outline-secondary btn-sm">Share
+</button> -->
 <button onclick="stopGeoShare()" type="button" class="btn btn-outline-secondary btn-sm">Stop
 </button>
 <h6></h6>
@@ -79,7 +79,17 @@
 <button onclick="disableChannel()" type="button" class="btn btn-outline-secondary btn-sm">disableChannel
 </button>
 <hr class="hr hr-blurry"/>
+<button onclick="openBrowser()" type="button" class="btn btn-outline-secondary btn-sm">open browser
+</button>
+<hr class="hr hr-blurry"/>
 
+<h6>Pick files:</h6>
+<div class="imageContainer"
+     onclick="pickFiles()">
+    <!-- <img id="image4" class="pickedImage"> -->
+</div>
+<pre id="files_info">...</pre>
+<hr class="hr hr-blurry"/>
 
 <h6>Pick image:</h6>
 <div class="imageContainer"
@@ -104,7 +114,7 @@
 
 <h6>Location permission status:</h6>
 <div id="location_permission">...</div>
-<button onclick="requestLocationPermission()" class="btn btn-outline-secondary btn-sm">Request</button>
+<button onclick="locationRequest()" class="btn btn-outline-secondary btn-sm">Request</button>
 <hr class="hr hr-blurry"/>
 
 <h6>Location service enable:</h6>
@@ -135,11 +145,14 @@
         console.log("web view ready");
         isFlutterInAppWebViewReady = true;
         getDeviceInfo();
-        getLocationPermissionStatus();
-        getLocationEnableStatus();
+        locationStatus();
+        locationEnableStatus();
         listenSignInResult();
         getCurrentUser();
         onNotificationReceived();
+        window.addEventListener("notificationData", function(event) {
+             //event.detail.data
+        });
     });
 
     document.body.querySelector('#send').addEventListener('click', function() {

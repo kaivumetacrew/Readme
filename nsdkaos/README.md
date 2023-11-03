@@ -63,7 +63,7 @@ implementation project(":tdinews"){
 }
 ```
 
-## Who use it
+## How to use it
 Init SDK
 ```kotlin
 import vn.mc.tdinews.TdiNews
@@ -75,8 +75,9 @@ Should be put in your `Application.onCreate`
 ```kotlin
 TdiNews.Builder(this)
     .setClientId("IANCT-TEST")
-    .setServiceUrl("https://api.uat.inappnews.net")
     .initSDK { info ->
+        // Only initialize once time inside SDK,
+        // If SDK had initialized this statement still invoke when initSDK being call
         print("init sdk completed")
     }
 ```
@@ -108,6 +109,7 @@ Launch news UI from your activity (made sure SDK was initialized):
 val intent = TdiNews.getIntent(this)
 startActivity(intent)
 ```
+
 ## Handle notification service click
 Put your notification provided by client
 -
@@ -119,15 +121,11 @@ Test service:
     android:name="com.onesignal.NotificationServiceExtension"
     android:value="vn.mc.tdinews.TdiNotificationServiceTest" />
 ```
-Replace meta-data value service class follow with your clientId:
-```xml
-  <meta-data
-    android:name="com.onesignal.NotificationServiceExtension"
-    android:value="vn.mc.tdinews.TdiNotificationService${YOUR_CLIENT_ID}" />
-```
+
 ex: `vn.mc.tdinews.TdiNotificationServiceIANCT001`
 
 Should be put in launch activity
+
 ```kotlin
 TdiNews.setOnNotificationClick {
     initSDK {
@@ -136,3 +134,43 @@ TdiNews.setOnNotificationClick {
 }
 ```
 
+## Handle action share article
+
+Inside app/AndroidManifest.xml tag `application` -> `your launch activiy`
+Put in your launcher activity tag
+
+```xml
+
+<activity
+    android:name=".MainActivity"
+    android:exported="true"
+    android:label="@string/app_name"
+    android:theme="@style/Theme.SampleApp">
+    <intent-filter >
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+    <!--HANDLE ACTION SHARE-->
+    <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data
+            android:host="inappnews.tdi"
+            android:scheme="tdi" />
+        <data
+            android:host="inappnews.tdi"
+            android:scheme="https" />
+    </intent-filter>
+    <!--END HANDLE ACTION SHARE-->
+    
+</activity>
+```
+
+In launch activity resume lifecycle aware:
+```kotlin
+TdiNews.Builder(this)
+    .setClientId("IANCT-TEST")
+    .initSDK { info ->
+        TdiNews.checkActionShare(this)
+    }
+```
