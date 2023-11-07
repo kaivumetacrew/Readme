@@ -73,6 +73,7 @@ TdiNews.Builder(UIApplication.shared)
     .setServiceUrl("{SERVICE_URL}")
     .setAPN(TdiNews.APN.OneSignal)
     .initSDK { info in
+      
         self.showInfoText(info)
     }
 ```
