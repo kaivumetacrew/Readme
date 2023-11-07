@@ -76,8 +76,9 @@ Should be put in your `Application.onCreate`
 TdiNews.Builder(this)
     .setClientId("IANCT-TEST")
     .initSDK { info ->
-        // Only initialize once time inside SDK,
-        // If SDK had initialized this statement still invoke when initSDK being call
+        TdiNews.setOnNotificationClick {
+            startActivity(TdiNews.getIntent(this))
+        }
         print("init sdk completed")
     }
 ```
