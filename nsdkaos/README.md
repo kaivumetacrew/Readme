@@ -126,3 +126,7 @@ Test service:
 ```
 
 ex: `vn.mc.tdinews.TdiNotificationServiceIANCT001`
+
+## To replace notification icon
+Put a drawable notification icon named "ic_stat_onesignal_default.xml" 
+in resource path: `res/drawable/ic_stat_onesignal_default.xml`
