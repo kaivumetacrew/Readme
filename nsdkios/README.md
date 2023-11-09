@@ -17,23 +17,34 @@ Delivered SDK include:
 
 1. Copy the SDK folder to your Project folder, then drag it into the Project Navigator.
    
-3. Link the SDK package into the `Frameworks, Libraries, and Embedded Content` section.
+   ![01](https://raw.githubusercontent.com/kaivumetacrew/Readme/huge/nsdkios/nsdk1.png)
+   
+2. Link the SDK package into the `Frameworks, Libraries, and Embedded Content` section.
+
+   ![01](https://raw.githubusercontent.com/kaivumetacrew/Readme/huge/nsdkios/nsdk2.png)
+
 
 ### Objective C Project
 
-If your Project is base on Objective C, then create Bridging-Header file and import SDK into it.
+If your Project is base on Objective C, then create `Bridging-Header.h` file and import SDK into it.
 
-You can create a bridging file automatically or manually. Incase of manually, make sure its path in Build Setting is correct. 
+   ![01](https://raw.githubusercontent.com/kaivumetacrew/Readme/huge/nsdkios/nsdk3.png)
+
+You can create a bridging file automatically or manually. Incase of manually, make sure its path in `Build Setting` is correct. 
+
+   ![01](https://raw.githubusercontent.com/kaivumetacrew/Readme/huge/nsdkios/nsdk4.png)
 
 ## Switch package mode
 
 We have 3 modes of SDK to use in app: Debug, Release and Profile.
 
-1. In the Package file, select your desired mode by selecting the corresponding folder (comment the unused others). Below is the debug mode. 
+1. In the Package file, select your desired mode by selecting the corresponding folder (comment the unused others). Below is the debug mode.
+   
+   ![01](https://raw.githubusercontent.com/kaivumetacrew/Readme/huge/nsdkios/nsdk5.png)
 
-2. Build app, the package now is updated.
+3. `Build` app, the package now is updated.
 
-3. Update the current package to the latest version: `Menu` -> `File` -> `Packages` -> `Update to Latest Package Versions`.
+4. Update the current package to the latest version: `Menu` -> `File` -> `Packages` -> `Update to Latest Package Versions`.
 
 Now the app is using the new mode.
    
