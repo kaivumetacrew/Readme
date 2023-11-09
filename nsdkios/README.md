@@ -10,33 +10,38 @@
 
 Delivered SDK include:
 
-- Sample xcode project (path: [SampleIOS]())
-- NewsSDK Swift package (path: [SampleIOS/TdiNews]())
+- Sample xcode project include both Swift and Objective C version (path: [SampleIOS]())
+- NewsSDK package (path: [SampleIOS/TdiNews]())
 
-## Add News SDK to exist XCode project
+## Add News SDK to exist XCode Project
 
-In exist Xcode project
-`Application target settings` -> `General` -> `Frameworks, Libraries, and Embedded Content`
+1. Copy the SDK folder to your Project folder, then drag it into the Project Navigator.
+   
+3. Link the SDK package into the `Frameworks, Libraries, and Embedded Content` section.
 
-`Add Other...` -> `Add Files...` -> select [TdiNews package]() `(folder "SampleIOS/TdiNews")`
+### Objective C Project
 
-![01](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios1.png)
+If your Project is base on Objective C, then create Bridging-Header file and import SDK into it.
 
-Example project, you can drag the frameworks from sample/SampleIOS/TdiNews/news/Debug/ in Finder into your target’s Build Settings > Build Phases > Link Binary With Libraries.
+You can create a bridging file automatically or manually. Incase of manually, make sure its path in Build Setting is correct. 
 
-In the target’s build settings, add `$(PROJECT_DIR)/TdiNews/news/Release/` to the Framework Search 
-Paths (FRAMEWORK_SEARCH_PATHS).
+## Switch package mode
 
-![02](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios2.png)
+We have 3 modes of SDK to use in app: Debug, Release and Profile.
 
-`Application target settings` -> `Build Phases` -> `Link Binary With Libraries`
-`Add Other...` -> `Add Files...` -> select
-all [*.xcframework]() `(folder "SampleIOS/TdiNews/news/")`
-Then embed them in `General` -> `Frameworks, Libraries, and Embedded Content`
+1. In the Package file, select your desired mode by selecting the corresponding folder (comment the unused others). Below is the debug mode. 
 
-![03](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios3.png)
+2. Build app, the package now is updated.
 
-## Use
+3. Update the current package to the latest version: `Menu` -> `File` -> `Packages` -> `Update to Latest Package Versions`.
+
+Now the app is using the new mode.
+   
+
+
+## Usage
+
+### Swift
 
 Init SDK
 
@@ -47,7 +52,7 @@ import TdiNews
 Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 or using client id "IANCT-TEST" for development and testing
 ```swift
-TdiNews.Builder(UIApplication.shared)
+TdiNews.Builder()
     .setClientId("IANCT-TEST")
     .setServiceUrl("https://api.uat.inappnews.net")
     .initSDK { info in
@@ -68,13 +73,12 @@ APN: `TdiNews.APN.OneSignal`
 If you want specify init configurations:
 Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 ```swift
-TdiNews.Builder(UIApplication.shared)
+TdiNews.Builder()
     .setClientId("{YOUR_CLIENT_ID}")
     .setServiceUrl("{SERVICE_URL}")
     .setAPN(TdiNews.APN.OneSignal)
     .initSDK { info in
-      
-        self.showInfoText(info)
+      //your service info here 
     }
 ```
 
@@ -83,6 +87,28 @@ Launch news UI from your UIViewController (made sure SDK was initialized):
 ```swift
 self.present(TdiNews.shared.viewController(), animated: true, completion: nil)
 ```
+
+### Objective C
+
+All behaviors are the same as Swift but the language now is Objective C.
+
+Import Bridge-Header.h where you want to call the sdk
+
+```objective c
+#import "Bridge-Header.h" 
+```
+Init SDK
+```objective c
+    [[[[Builder alloc] setClientId:@"{YOUR_CLIENT_ID}"] setServiceUrl:@"{SERVICE_URL}"] initSDK:^(Info * info) {
+        //your service info here 
+    }];
+```
+Present news UI
+```objective c
+    UIViewController * vc = [[TdiNews shared] viewController];
+    [self presentViewController:vc animated:true completion:nil];
+```
+
 
 ## Receive news notifications
 If exist application had Background Modes and Push Notifications capability, please skip this step
