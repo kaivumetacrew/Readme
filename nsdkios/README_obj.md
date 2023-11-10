@@ -18,7 +18,11 @@ Delivered SDK include:
 In exist Xcode project
 `Application target settings` -> `General` -> `Frameworks, Libraries, and Embedded Content`
 
-`Add Other...` -> `Add Files...` -> select [TdiNews package]() `(folder "SampleIOS/TdiNews")`
+`Add Other...` -> `Add Files...` -> select [TdiNews package]() `(folder "SampleIOS/TdiNewsDebug" or "SampleIOS/TdiNewsRelease")`
+
+![add_package](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/add_package.png)
+
+After linked package:
 
 ![embed_framework](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/embed_framework.png)
 
@@ -28,19 +32,19 @@ frameworks was automatically linked to project with this update.
 
 If you ever don't this before, please skip this step.
 
+If you update `TdiNews` with a previous version please select in xcode menu:
+`Menu` -> `File` -> `Packages` ->` Update to latest package versions`.
+
 ![remove_framework](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/remove_framework.png)
 
 
 ## Create Objective-C Bridging Header file:
 If your project is exist .h Objective-C Bridging Header file, please skip this step
 Create a .h file, in `Application target settings` -> `Build Settings` -> `Swift Compiler` -> Declare your .h header
+
+Inside Objective-C Bridging Header .h file:
 ```objectivec
-#import <UIKit/UIKit.h>
-#import "SampleIOS-Bridging-Header.h"
-
-@interface ViewController : UIViewController
-
-@end
+@import TdiNews;
 ```
 
 ## How to use
