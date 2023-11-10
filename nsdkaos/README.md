@@ -56,11 +56,7 @@ implementation project(":tdinews"){
 
 Or implement with build type:
 ```groovy
-implementation project(":tdinews"){
-    debugImplementation ('vn.mc.tdi_news:flutter_debug:1.0')
-    profileImplementation ('vn.mc.tdi_news:flutter_profile:1.0')
-    releaseImplementation ('vn.mc.tdi_news:flutter_release:1.0')
-}
+implementation project(":tdinews")
 ```
 
 ## How to use it
@@ -71,14 +67,11 @@ import vn.mc.tdinews.TdiNews
 
 Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 or using client id "IANCT-TEST" for development and testing
-Should be put in your `Application.onCreate`
+Should be put in your `Application.onCreate` or launch activity
 ```kotlin
 TdiNews.Builder(this)
     .setClientId("IANCT-TEST")
     .initSDK { info ->
-        TdiNews.setOnNotificationClick {
-            startActivity(TdiNews.getIntent(this))
-        }
         print("init sdk completed")
     }
 ```
@@ -101,20 +94,21 @@ TdiNews.Builder(this)
     .setServiceUrl("{SERVICE_URL}")
     .setAPN(TdiNews.APN.OneSignal)
     .initSDK { info ->
-        TdiNews.setOnNotificationClick {
-            startActivity(TdiNews.getIntent(this))
-        }
         print("init sdk completed")
     }
 ```
 
 Launch news UI from your activity (made sure SDK was initialized):
 ```kotlin
-val intent = TdiNews.getIntent(this)
-startActivity(intent)
+startActivity(TdiNews.getIntent(this))
 ```
 
-## Handle notification service click
+## Handle notification click
+Should be put inside onCreate of activity that it will native news content, and it is activity what news content back to
+```kotlin
+TdiNews.setActivityHandleNotification(this)
+```
+
 Put your notification provided by client
 -
 Inside app/AndroidManifest.xml tag `application`
