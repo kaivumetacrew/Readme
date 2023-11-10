@@ -30,14 +30,11 @@ Paths (FRAMEWORK_SEARCH_PATHS).
 ![02](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios2.png)
 
 `Application target settings` -> `Build Phases` -> `Link Binary With Libraries`
-`Add Other...` -> `Add Files...` -> select
-all [*.xcframework]() `(folder "SampleIOS/TdiNews/news/")`
-Then embed them in `General` -> `Frameworks, Libraries, and Embedded Content`
-
+Please remove all of .xcframework if that you added before. Because after you add `TdiNews` these frameworks was automatically linked to project with this update. 
+Or Not ever do that before, please skip this step
 ![03](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/nsdkios3.png)
 
-## Use
-
+## How to use
 Init SDK
 
 ```swift
@@ -49,10 +46,16 @@ or using client id "IANCT-TEST" for development and testing
 ```swift
 TdiNews.Builder(UIApplication.shared)
     .setClientId("IANCT-TEST")
-    .setServiceUrl("https://api.uat.inappnews.net")
     .initSDK { info in
         self.showInfoText(info)
     }
+```
+```objectivec
+[[TdiNews shared] requestPermission];
+[[[Builder alloc] setClientId:@"IANCT-TEST"]
+initSDK:^(Info * info) {
+    [[self labelInfo] setText: [info toString]];
+}];
 ```
 
 Test service url: https://api.uat.inappnews.net
@@ -71,17 +74,26 @@ Please replace `YOUR_CLIENT_ID` by your id which provided by MC developer
 TdiNews.Builder(UIApplication.shared)
     .setClientId("{YOUR_CLIENT_ID}")
     .setServiceUrl("{SERVICE_URL}")
-    .setAPN(TdiNews.APN.OneSignal)
     .initSDK { info in
-      
         self.showInfoText(info)
     }
+```
+```objectivec
+[[TdiNews shared] requestPermission];
+[[[Builder alloc] setClientId:@"{YOUR_CLIENT_ID}"]
+initSDK:^(Info * info) {
+    [[self labelInfo] setText: [info toString]];
+}];
 ```
 
 Launch news UI from your UIViewController (made sure SDK was initialized):
 
 ```swift
 self.present(TdiNews.shared.viewController(), animated: true, completion: nil)
+```
+```objectivec
+UIViewController * vc = [[TdiNews shared] viewController];
+[self presentViewController:vc animated:true completion:nil];
 ```
 
 ## Receive news notifications
@@ -94,5 +106,8 @@ in `Application target settings` -> `Signing & Capability` -> `+ Capability`
 In `AppDelegate` implement `UNUserNotificationCenterDelegate` 
 ```swift
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate
+```
+```objectivec
+
 ```
 
