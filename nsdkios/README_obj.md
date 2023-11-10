@@ -101,7 +101,7 @@ If exist application had Background Modes and Push Notifications capability, ple
 
 For notification in news sdk you need add Push Notifications Capability
 in `Application target settings` -> `Signing & Capability` -> `+ Capability`
-![04](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/background_modes.png)
+![push_notifications](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkios/push_notifications.png)
 
 In `AppDelegate` implement `UNUserNotificationCenterDelegate` 
 ```objectivec
