@@ -104,6 +104,9 @@ startActivity(TdiNews.getIntent(this))
 ```
 
 ## Handle notification click
+Sample handle notification click 
+![embed_framework](https://raw.githubusercontent.com/kaivumetacrew/Readme/main/nsdkaos/sample_flow.png)
+
 Should be put inside onCreate of activity that it will native news content, and it is activity what news content back to
 ```kotlin
 TdiNews.setActivityHandleNotification(this)
@@ -125,3 +128,5 @@ ex: `vn.mc.tdinews.TdiNotificationServiceIANCT001`
 ## To replace notification icon
 Put a drawable notification icon named "ic_stat_onesignal_default.xml" 
 in resource path: `res/drawable/ic_stat_onesignal_default.xml`
+
+
