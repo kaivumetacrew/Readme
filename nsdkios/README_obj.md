@@ -39,7 +39,8 @@ If you update `TdiNews` with a previous version please select in xcode menu:
 
 
 ## Create Objective-C Bridging Header file:
-If your project is exist .h Objective-C Bridging Header file, please skip this step
+If your project is exist .h Objective-C Bridging Header file, please skip this step.
+
 Create a .h file, in `Application target settings` -> `Build Settings` -> `Swift Compiler` -> Declare your .h header
 
 Inside Objective-C Bridging Header .h file:
