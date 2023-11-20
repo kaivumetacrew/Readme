@@ -100,7 +100,9 @@ TdiNews.Builder(this)
 
 Launch news UI from your activity (made sure SDK was initialized):
 ```kotlin
-startActivity(TdiNews.getIntent(this))
+if (TdiNews.hasInitialized) {
+    startActivity(TdiNews.getIntent(this))
+}
 ```
 
 ## Handle notification click
@@ -109,7 +111,26 @@ Sample handle notification click
 
 Should be put inside onCreate of activity that it will native news content, and it is activity what news content back to
 ```kotlin
-TdiNews.setActivityHandleNotification(this)
+TdiNews.listenSDKInitialized {
+    // Maybe you already have permission but you should add it like this
+    TdiNews.requestPermission(object : TdiNews.OnPermissionResult {
+        override fun onGranted() {
+        }
+
+        override fun onRejected() {
+        }
+
+        override fun onError(e: Throwable?) {
+        }
+    })
+    try {
+        // You need to put it inside the onCreate of the activity that will be the default
+        // news content, and it is the Activity that returns the news content back to you.
+        TdiNews.setActivityHandleNotification(this)
+    } catch (e: Exception) {
+        Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+    }
+}
 ```
 
 Put your notification provided by client
