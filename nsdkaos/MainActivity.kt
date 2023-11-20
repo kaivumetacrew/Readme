@@ -21,34 +21,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(TdiNews.getIntent(this))
             }
         }
-        // 또는
+
         TdiNews.listenSDKInitialized {
-
-            // push service need reaction from the application to check notice permission,
-            // if you use this block, please only use it after sdk initialized,
-            // if you check permission by yourself,  you should also put it in the listen block
-            // TdiNews.listenSDKInitialized {} like this
-            // or surround it inside if(NotificationManagerCompat.from(this).areNotificationsEnabled()){
-            //
-            // }
-            // 푸시 서비스는 알림 권한을 확인하기 위해 애플리케이션의 반응이 필요합니다.
-            // 이 블록을 사용하는 경우 SDK 초기화 후에만 사용하세요.
-            // 권한을 직접 확인하는 경우에는 Listen 블록에도 넣어야 합니다 TdiNews.listenSDKInitialized {}
-            // 이와 같이, 아니면 안쪽으로 둘러싸거나 if(NotificationManagerCompat.from(this).areNotificationsEnabled()){
-            //
-            //  }
-            Thread.sleep(133)
-            TdiNews.requestPermission(object : TdiNews.OnPermissionResult {
-                override fun onGranted() {
-                }
-
-                override fun onRejected() {
-                }
-
-                override fun onError(e: Throwable?) {
-                }
-            })
-
             // this block to handle event click on notification
             // 알림 시 이벤트 클릭을 처리하기 위한 이 블록
             try {
