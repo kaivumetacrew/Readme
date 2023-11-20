@@ -56,7 +56,11 @@ implementation project(":tdinews"){
 
 Or implement with build type:
 ```groovy
-implementation project(":tdinews")
+implementation project(":tdinews"){
+    debugImplementation 'vn.mc.tdi_news:flutter_debug:1.0'
+    profileImplementation 'vn.mc.tdi_news:flutter_profile:1.0'
+    releaseImplementation 'vn.mc.tdi_news:flutter_release:1.0'
+}
 ```
 
 ## How to use it
